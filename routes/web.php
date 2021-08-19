@@ -29,13 +29,7 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::resource('/usuario', UsuarioController::class);
     Route::resource('/role', RoleController::class);
 
-    Route::get('/admin', function () {
-        return "Administración";
-    });
-
-    Route::get('/admin/usuario', function () {
-        return "Lista de Usuario";
-    });
+    
 });
 
 // roles

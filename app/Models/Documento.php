@@ -10,5 +10,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Documento extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     
 }

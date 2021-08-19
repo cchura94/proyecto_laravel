@@ -1,0 +1,19 @@
+MONGODB WINDOWS (https://gist.github.com/AlejoJamC/b8635af765ac7495c4931403b97a0d78)
+
+- iniciar consola como administrator
+
+- iniciar servicio
+> net start MongoDB
+
+- detener servicio
+> net stop MongoDB
+
+MONGODB WINDOWS (https://serverfault.com/questions/311565/stop-postgresql-from-starting-on-windows)
+
+- iniciar consola como administrator
+
+- iniciar servicio
+> net start postgresql-x64-12
+
+- detener servicio
+> net stop postgresql-x64-12
