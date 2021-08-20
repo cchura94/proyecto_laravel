@@ -1,0 +1,9 @@
+php artisan make:model Cliente -m
+php artisan make:model Pedido -m 
+php artisan make:model Producto -m 
+php artisan make:model Sucursal -m 
+php artisan make:model Proveedor -m
+
+php artisan make:migration create_pedido_producto_table
+php artisan make:migration create_producto_sucursal_table
+php artisan make:migration create_producto_proveedor_table
