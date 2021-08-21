@@ -7,3 +7,23 @@ php artisan make:model Proveedor -m
 php artisan make:migration create_pedido_producto_table
 php artisan make:migration create_producto_sucursal_table
 php artisan make:migration create_producto_proveedor_table
+
+------------ Controladores -------------------
+php artisan make:controller ClienteController -r
+php artisan make:controller PedidoController -r
+php artisan make:controller ProductoController -r
+php artisan make:controller ProveedorController -r
+php artisan make:controller SucursalController -r
+
+------------ Rutas para los recursos en (web.php) ----------
+use App\Http\Controllers\ClienteController;
+
+Route::resource("cliente", ClienteController::class);
+Route::resource("pedido", PedidoController::class);
+Route::resource("producto", ProductoController::class);
+Route::resource("proveedor", ProveedorController::class);
+Route::resource("sucursal", SucursalController::class);
+
+-----------  Logica de programación -----------------------
+
+----------- Plantillas a nuestro proyecto -----------------
