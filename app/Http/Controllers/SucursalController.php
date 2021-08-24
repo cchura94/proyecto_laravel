@@ -117,4 +117,10 @@ class SucursalController extends Controller
     {
         //
     }
+
+    public function apiLista()
+    {
+        $sucursales = Sucursal::all();
+        return response()->json($sucursales);
+    }
 }

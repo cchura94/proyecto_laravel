@@ -1,4 +1,16 @@
-<h1>Lista de Sucursales</h1>
+@extends('layouts.admin')
+
+@section('contenido')
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                <h4>Lista de Sucursales</h4>
+                </div>
+
+               
 
 @if (session('mensaje'))
     <div class="alert alert-success">
@@ -8,9 +20,9 @@
 
 <hr>
 
-<a href="{{ route('sucursal.create') }}">Nueva Sucursal</a>
+<a href="{{ route('sucursal.create') }}" class="btn btn-primary">Nueva Sucursal</a>
 
-<table class="table" border=1>
+<table class="table table-striped table-hover" border=1>
     <tr>
         <td>NOMBRE</td>
         <td>TELEFONO</td>
@@ -25,8 +37,16 @@
         <td>{{ $sucursal->direccion }}</td>
         <td>{{ $sucursal->user_id }}</td>
         <td>
-            <a href="{{ route('sucursal.edit', $sucursal->id) }}">editar</a>
+            <a href="{{ route('sucursal.edit', $sucursal->id) }}" class="btn btn-warning btn-xs">editar</a>
         </td>
     </tr>
     @endforeach
 </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@endsection

@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
-@section('content')
+@section('contenido')
 <h1>Lista Documentos</h1>
 <a href="/documento/create">Registrar Nuevo Documento</a> |
 <a href="{{ route('documento.create') }}">Registrar Nuevo Documento 2</a>

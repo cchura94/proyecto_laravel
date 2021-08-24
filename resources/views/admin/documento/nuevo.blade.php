@@ -1,3 +1,9 @@
+@extends("layouts.admin")
+
+
+@section('contenido')
+
+
 <h1>Nuevo Documento</h1>
 
 <form action="{{ route('documento.store') }}" method="post" enctype="multipart/form-data">
@@ -20,3 +26,5 @@
     <input type="submit" value="Guardar Datos">
     <input type="reset">
 </form>
+
+@endsection

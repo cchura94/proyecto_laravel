@@ -1,6 +1,7 @@
-@extends("layouts.app")
+@extends("layouts.admin")
 
-@section("content")
+
+@section('contenido')
 
 <h1>Lista de Usuarios</h1>
 

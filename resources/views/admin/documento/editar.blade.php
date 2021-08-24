@@ -1,3 +1,8 @@
+@extends("layouts.admin")
+
+
+@section('contenido')
+
 <h1>Editar Documento</h1>
 
 <form action="{{ route('documento.update', $documento->id) }}" method="post" enctype="multipart/form-data">
@@ -22,3 +27,5 @@
     <input type="submit" value="Modificar Datos">
     <input type="reset">
 </form>
+
+@endsection

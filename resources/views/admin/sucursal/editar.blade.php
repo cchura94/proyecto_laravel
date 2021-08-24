@@ -1,3 +1,8 @@
+@extends("layouts.admin")
+
+
+@section('contenido')
+
 <h1>Editar Sucursal</h1>
 
 
@@ -36,3 +41,5 @@
     <br>
     <input type="submit" value="Modificar Sucursal">
 </form>
+
+@endsection
