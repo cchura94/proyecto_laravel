@@ -14,7 +14,8 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        return view('admin.producto.index');
+        $lista_productos = Producto::all();
+        return view('admin.producto.principal', compact('lista_productos'));
     }
 
     /**
@@ -35,7 +36,28 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validar
+        $request->validate([
+            "nombre" => "required"
+        ]);
+          // subir imagen
+          $nom_imagen = "";
+          if($file = $request->file("imagen")){
+              // nombre original del archivo
+              $nom_imagen = $file->getClientOriginalName();
+              $file->move("imagenes", $nom_imagen);
+              $nom_imagen = "imagenes/" . $nom_imagen;            
+          }
+        
+        $producto = new Producto;
+        $producto->nombre = $request->nombre;
+        $producto->precio = $request->precio;
+        $producto->descripcion = $request->descripcion;
+        $producto->imagen = $nom_imagen;
+        $producto->fecha_vencimiento = $request->fecha_vencimiento;
+        $producto->save();
+
+        return redirect()->back()->with("mensaje", "Producto registrado");
     }
 
     /**

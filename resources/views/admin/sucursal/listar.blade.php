@@ -1,14 +1,13 @@
 @extends('layouts.admin')
 
+@section('titulo', 'Lista de Sucursales')
+
 @section('contenido')
 
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <div class="card-title">
-                <h4>Lista de Sucursales</h4>
-                </div>
 
                
 

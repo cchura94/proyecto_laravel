@@ -1,9 +1,9 @@
 @extends("layouts.admin")
 
+@section('titulo', 'Editar Sucursal')
 
 @section('contenido')
 
-<h1>Editar Sucursal</h1>
 
 
 @if ($errors->any())
