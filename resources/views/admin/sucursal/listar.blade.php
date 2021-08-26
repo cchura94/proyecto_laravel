@@ -37,6 +37,47 @@
         <td>{{ $sucursal->user_id }}</td>
         <td>
             <a href="{{ route('sucursal.edit', $sucursal->id) }}" class="btn btn-warning btn-xs">editar</a>
+            <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal{{$sucursal->id}}">
+  Mostrar productos
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="Modal{{$sucursal->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Lista de Productos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover table-striped">
+            <tr>
+                <td>ID</td>
+                <td>NOMBRE</td>
+                <td>PRECIO</td>
+                <td>STOCK</td>
+            </tr>
+            @foreach ($sucursal->productos as $producto)            
+            <tr class="{{($producto->pivot->stock > 6)?'':'bg-warning'}}">
+                <td>{{ $producto->id }}</td>
+                <td>{{ $producto->nombre }}</td>
+                <td>{{ $producto->precio }}</td>
+                <td >{{ $producto->pivot->stock }}</td>
+            </tr>
+            @endforeach
+            
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
         </td>
     </tr>
     @endforeach

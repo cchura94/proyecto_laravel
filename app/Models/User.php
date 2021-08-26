@@ -49,4 +49,9 @@ class User extends Authenticatable
     public function documentos(){
         return $this->hasMany(Documento::class);
     }
+    
+    public function sucursales()
+    {
+        return $this->hasMany(Sucursal::class);
+    }
 }

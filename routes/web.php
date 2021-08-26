@@ -27,10 +27,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth','role:admin'])->group(function () {
 
+    // adicionar productos a sucursales
+    Route::post("/producto/{id}/asignar_sucursal", [ProductoController::class, "adicionar_productos_sucursal"])->name('adicionar_productos_sucursal');
+    // reporte pdf
+    Route::get("/producto/reporte", [ProductoController::class, "reporte"])->name('reporte');
+
+
     Route::resource("/documento", DocumentoController::class);
     // GET, POST, PUT, DELETE
     Route::resource("cliente", ClienteController::class);
-    Route::resource("pedido", PedidoController::class);
+    
     Route::resource("producto", ProductoController::class);
     Route::resource("proveedor", ProveedorController::class);
     Route::resource("sucursal", SucursalController::class);
@@ -40,6 +46,12 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::resource('/role', RoleController::class);
 
     
+    
+});
+
+
+Route::middleware(['auth','role:ventas'])->group(function () {
+    Route::resource("pedido", PedidoController::class);
 });
 
 // roles

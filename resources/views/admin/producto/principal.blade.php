@@ -20,6 +20,7 @@
 <div class="card">
               <div class="card-header">
                 <!-- Button trigger modal -->
+
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
   Nuevo Producto
 </button>
@@ -62,6 +63,8 @@
     </div>
   </div>
 </div>
+
+<a href="{{ route('reporte') }}" class="btn btn-info" target="_blank">Generar Reporte</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -76,14 +79,54 @@
                   </tr>
                   </thead>
                   <tbody>
+                 
                       @foreach ($lista_productos as $prod)                      
-                  <tr class="{{($prod->fecha_vencimiento < '2021-09-01')?'bg-danger':''}}">
+                  <tr class="{{($prod->fecha_vencimiento && $prod->fecha_vencimiento < date('Y-m-d'))?'bg-danger':''}}">
                     <td>{{ $prod->id }}</td>
                     <td>{{$prod->nombre}}</td>
                     <td>{{$prod->precio}}</td>
                     <td> {{$prod->fecha_vencimiento}}</td>
                     <td>
-                        {{ date('Y-m-d'); }}
+                        
+                        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#sucursalModal{{ $prod->id }}">
+  Adicionar Sucursal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="sucursalModal{{ $prod->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Asignar Producto a Sucursal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('adicionar_productos_sucursal', $prod->id) }}" method="post">
+      @csrf
+      <div class="modal-body">
+          <label for="">Producto:</label>
+          <p>{{$prod->nombre}}</p>
+
+          <label for="">Cantidad:</label>
+          <input type="number" name="cantidad" class="form-control">
+          
+          <label for="">Seleccionar Sucursal</label>
+          <select name="sucursal_id" id="" class="form-control">
+          @foreach ($lista_sucursales as $sucursal)
+            <option value="{{ $sucursal->id }}">{{$sucursal->nombre}}</option>
+          @endforeach
+          </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Asignar Productos</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
                         
                     </td>
                   </tr>

@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     use HasFactory;
+
+    public function pedidos()
+    {
+        return $this->belongsToMany(Pedido::class)->withPivot('stock');
+    }
+
+    public function sucursales()
+    {
+        return $this->belongsToMany(Sucursal::class);
+    }
 }
