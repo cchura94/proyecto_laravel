@@ -34,7 +34,7 @@
         <td>{{ $sucursal->nombre }}</td>
         <td>{{ $sucursal->telefono }}</td>
         <td>{{ $sucursal->direccion }}</td>
-        <td>{{ $sucursal->user_id }}</td>
+        <td>{{ $sucursal->user->email }}</td>
         <td>
             <a href="{{ route('sucursal.edit', $sucursal->id) }}" class="btn btn-warning btn-xs">editar</a>
             <!-- Button trigger modal -->
